@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <title>Content Creation Chatbot</title>
+  <style>
+    body {font-family:Arial,serif;padding:20px;max-width:700px;margin:auto;}
+    .question-box { margin: 10px 0; padding: 10px; background: #f2f2f2; cursor: pointer; border-radius: 5px; }
+    .question-box:hover { background: #e0f0ff; }
+    input[type=text] { width: 80%; padding: 8px; margin: 10px 0; }
+    button { padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <h2>Ask the Content Creation Chatbot</h2>
+  <form method="POST">
+      <label for="questionInput"></label><input type="text" name="question" id="questionInput" value="{{ user_question }}" required>
+    <button type="submit">Ask</button>
+  </form>
+
+  {% if answer %}
+    <p><strong>Answer:</strong> {{ answer }}</p>
+  {% endif %}
+
+  <h3>Example Questions (Click to use)</h3>
+  {% for q in questions %}
+    <div class="question-box" onclick="document.getElementById('questionInput').value = '{{ q }}'">{{ q }}</div>
+  {%endfor%}
+</body>
+</html>
